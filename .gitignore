@@ -1,0 +1,7 @@
+/target
+node_modules
+static/style.css
+static/_cache
+dist
+.vscode
+.DS_Store

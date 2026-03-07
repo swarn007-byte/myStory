@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+{% endblock head %}
+{% block meta %}
+    <meta property="og:title" content="{{title}} | nam" />
+    <meta property="og:url" content="https://swarnshekhar.github.io/portfolio/" />
+    <meta property="og:image" content="/og/content/{{file_path}}.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:type" content="article" />
+    <meta name="twitter:title" content="{{title}} | nam ">
+    <meta name="twitter:image" content="/og/content/{{file_path}}.png">
+{% endblock meta %}
+{% block content %}
+    <h1 class="text-2xl md:text-3xl font-bold mb-4">{{title}}</h1>
+    <article>
+        {% if draft %}
+            <div class="draft-notice p-4 border-amber-500 border-[1px] bg-amber-300/30 dark:bg-amber-900/30">⚠️ This is a draft post. Read at your own risk!</div>
+        {% endif %}
+        <div class="markdown-content">
+        {{ content | safe }}
+        </div>
+        {% if date %}<div class="date text-right mt-4 text-sm">{{ date }}</div>{% endif %}
+        {% if author %}<div class="author text-right">By {{ author }}</div>{% endif %}
+    </article>
+    {% if headings %}
+    <div class="timeline-container">
+        <div class="timeline-items flex flex-col items-end">
+            {% for heading in headings %}
+                <div class="timeline-item " data-section="{{ heading.2 }}">
+                    <a href="#{{ heading.2 }}" class="timeline-link">
+                        <div class="timeline-dot dark:bg-neutral-600 bg-neutral-400"></div>
+                        <span class="timeline-text text-sm">{{ heading.1 }}</span>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <style>
+        .timeline-container {
+            position: fixed;
+            top: 40px;
+            right: 20px;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end; 
+            width: 50px; 
+        }
+
+        .timeline-item {
+            position: relative;
+        }
+
+        .timeline-dot {
+            width: 30px;
+            height: 2px;
+            border-radius: 1px;
+            transition: width 0.2s, background-color 0.2s;
+        }
+
+        .timeline-item:hover .timeline-dot {
+            width: 40px;
+        }
+
+        .timeline-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 8px; 
+        }
+
+        .timeline-item.active .timeline-dot {
+            background-color:oklch(0.769 0.188 70.08); 
+            width: 50px;
+            border-radius: 2px;
+        }
+
+        .timeline-text {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 5px;
+            display: none;
+            white-space: nowrap;
+        }
+
+        .timeline-item:hover .timeline-text {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-container {
+                display: none;
+            }
+        }
+    </style>
+
+    <script>
+        function copyCode(button) {
+            const codeBlock = button.closest('.code-block').querySelector('code');
+            const codeLines = codeBlock.querySelectorAll('.code-line');
+            const codeText = Array.from(codeLines)
+                .map(line => line.innerText)
+                .join('\n');
+            navigator.clipboard.writeText(codeText).then(() => {
+            }).catch((err) => {
+            });
+        }
+
+        // Timeline scroll functionality
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const sectionIds = Array.from(timelineItems).map(item => item.getAttribute('data-section'));
+        const sections = sectionIds.map(id => document.getElementById(id));
+
+        function getElementTop(element) {
+            let top = 0;
+            do {
+                top += element.offsetTop || 0;
+                element = element.offsetParent;
+            } while (element);
+            return top;
+        }
+
+        function getActiveSection() {
+            const scrollPosition = window.scrollY;
+            for (let i = 0; i < sections.length; i++) {
+                const section = sections[i];
+                const sectionTop = getElementTop(section);
+                if (sectionTop > scrollPosition + 100) { // Offset to trigger before section reaches top
+                    return i === 0 ? sections[0] : sections[i - 1];
+                }
+            }
+            return sections[sections.length - 1]; // Default to last section if scrolled past all
+        }
+
+        function updateActiveTimelineItem() {
+            const activeSection = getActiveSection();
+            const activeId = activeSection.id;
+            timelineItems.forEach(item => {
+                if (item.getAttribute('data-section') === activeId) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveTimelineItem);
+        updateActiveTimelineItem();
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\(", right: "\\)", display: false},
+                {left: "\\[", right: "\\]", display: true}
+            ],
+            throwOnError: false
+            });
+        });
+
+    </script>
+{% endblock content %}

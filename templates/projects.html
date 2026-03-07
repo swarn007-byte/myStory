@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}projects{% endblock title %}
+{% block head %}
+    {{ super() }}
+    <script src="/static/gol.js" defer></script>
+{% endblock head %}
+{% block meta %}
+    <meta property="og:title" content="swarn's projects" />
+    <meta property="og:url" content="https://swarnshekhar.github.io/portfolio/stuff" />
+    <meta property="og:image" content="/og/web/stuff.png" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="all the stuff that i have made">
+
+    <meta property="twitter:description" content="all the stuff that i have made">
+    <meta name="twitter:title" content="swarn's projects">
+    <meta property="twitter:image" content="/og/web/stuff.png" />
+{% endblock meta %}
+{% block content %}
+    <div id="projects-container">
+        {% for category in projects %}
+            <div class="">
+                <h2 class="text-xl font-bold mb-4">{{ category.type }}</h2>
+                <div class="flex flex-wrap">
+                    {% for project in category.array %}
+                        <a href="{{ project.link | default(value='https://github.com/swarn007-byte/' ~ project.name) }}" class="w-full md:w-1/2 md:py-0 py-2 {% if loop.index0 % 2 == 0 %}md:pr-2 pr-0{% else %}pl-0 md:pl-2{% endif %} mb-0 md:mb-4">
+                            <div class="border-neutral-300 dark:border-neutral-800 border-[1px] p-4 h-full">
+                                <h3 class="text-n font-bold dark:text-white text-neutral-800 mb-2">{{ project.name }}</h3>
+                                <p class="normal-text text-sm mb-4">{{ project.desc }}</p>
+                                <div class="flex flex-wrap gap-2">
+                                    {% for tech in project.tech %}
+                                        <span class="font-mono dark:text-neutral-200 text-neutral-600 bg-neutral-200 dark:bg-neutral-800 text-xs px-2 py-1">{{ tech }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

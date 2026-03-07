@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+{% block title %}home{% endblock title %}
+{% block sidebar %}{% endblock sidebar %}
+{% block main_class %}w-full max-w-2xl mx-auto lg:pl-0{% endblock main_class %}
+{% block head %}
+    {{ super() }}
+    <script src="/static/home.js" defer></script>
+{% endblock head %}
+{% block meta %}
+<meta property="og:title" content="Swarn Shekhar | AI/ML Developer" />
+<meta property="og:url" content="https://swarnshekhar.github.io/portfolio/" />
+<meta property="og:image" content="/og/web/index.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="AI/ML developer building RAG pipelines, computer vision, and MCP tools." />
+<meta property="twitter:description" content="AI/ML developer building RAG pipelines, computer vision, and MCP tools." />
+<meta name="twitter:title" content="Swarn Shekhar | AI/ML Developer" />
+<meta property="twitter:image" content="/og/web/index.png" />
+{% endblock meta %}
+{% block content %}
+
+<header class="home-header">
+    <img
+        src="https://github.com/swarn007-byte.png"
+        alt="Swarn Shekhar"
+        class="home-avatar"
+    />
+    <h1 class="home-name">swarn</h1>
+    <p class="home-role">ai/ml developer</p>
+    <p class="home-location">india</p>
+</header>
+
+<nav class="home-nav" aria-label="Contact and links">
+    <a href="https://drive.google.com/file/d/1C4Nv64ONPuVVtoIdua45fvBfTp_5sPod/view?usp=sharing" target="_blank" rel="noopener noreferrer">resume</a>
+    <a href="mailto:swarnshekhar21j@gmail.com">email me</a>
+    <a href="https://twitter.com/messages/compose?screen_name=Chsnn1f" target="_blank" rel="noopener noreferrer">dm on x</a>
+    <a href="https://github.com/swarn007-byte" target="_blank" rel="noopener noreferrer">github</a>
+    <a href="https://www.linkedin.com/in/swarn-shekhar-89890727b/" target="_blank" rel="noopener noreferrer">linkedin</a>
+</nav>
+
+<section class="home-section">
+    <h2 class="home-section-title">About Me</h2>
+    <div class="home-prose">
+        <p>
+            I'm mostly into <span class="home-em">AI/ML</span> — building RAG pipelines,
+            computer vision systems, and tools that sit on top of large language models.
+            Most of my projects are things I built while trying to understand how
+            neural networks and retrieval systems actually work under the hood.
+        </p>
+        <p>
+            I've published a paper on <span class="home-em">neural networks from scratch</span>,
+            solved 1000+ DSA problems on GeeksforGeeks and LeetCode, and actively compete on
+            Kaggle. Always open to conversations and collaborations — reach me at
+            <a href="mailto:swarnshekhar21j@gmail.com" class="link">swarnshekhar21j@gmail.com</a>.
+        </p>
+        <p>
+            I document projects on GitHub and write about whatever I'm currently digging into.
+            In my free time I read, compete on coding platforms, and occasionally stare at
+            contribution graphs a little too long — check out my
+            <a href="/stuff" class="link">projects</a> and
+            <a href="/media" class="link">media log</a>.
+        </p>
+    </div>
+</section>
+
+<hr class="home-divider" />
+
+<section class="home-section">
+    <div class="home-section-head">
+        <h2 class="home-section-title">GitHub Activity</h2>
+        <a href="https://github.com/swarn007-byte" target="_blank" rel="noopener noreferrer" class="home-view-all">view profile →</a>
+    </div>
+
+    <div id="github-stats" class="github-stats">
+        <span class="github-stat-skeleton">loading stats…</span>
+    </div>
+
+    <div class="github-chart-wrap">
+        <img
+            id="contrib-chart"
+            src="https://ghchart.rshah.org/39d353/swarn007-byte"
+            alt="GitHub contribution chart for swarn007-byte"
+            class="github-chart"
+            loading="lazy"
+        />
+    </div>
+
+    <div id="repo-activity" class="repo-activity-list" aria-label="Recent repository activity">
+        <p class="normal-text text-sm">loading recent activity…</p>
+    </div>
+</section>
+
+<hr class="home-divider" />
+
+<section class="home-section">
+    <div class="home-section-head">
+        <h2 class="home-section-title">Projects</h2>
+        <a href="/stuff" class="home-view-all">view all →</a>
+    </div>
+
+    <div class="home-projects">
+        <a href="https://github.com/swarn007-byte/fyodor-dostoevsky-RETRIEVAL" target="_blank" rel="noopener noreferrer" class="home-project">
+            <div class="home-project-top">
+                <h3 class="home-project-name">fyodor-dostoevsky-RETRIEVAL</h3>
+                <span class="home-project-arrow" aria-hidden="true">↗</span>
+            </div>
+            <p class="home-project-desc">
+                Retrieval-Augmented Generation pipeline built with Bun, Express, Supabase pgvector,
+                LangChain, and Upstash Redis to query Dostoevsky's White Nights.
+            </p>
+            <div class="home-project-tech">
+                <span>TypeScript</span>
+                <span>LangChain</span>
+                <span>pgvector</span>
+                <span>RAG</span>
+            </div>
+        </a>
+
+        <a href="https://github.com/swarn007-byte/ML-Studio-Interactive" target="_blank" rel="noopener noreferrer" class="home-project">
+            <div class="home-project-top">
+                <h3 class="home-project-name">ML-Studio-Interactive</h3>
+                <span class="home-project-arrow" aria-hidden="true">↗</span>
+            </div>
+            <p class="home-project-desc">
+                ML algorithm visualiser over user-provided custom datasets — train, compare,
+                and understand models interactively.
+            </p>
+            <div class="home-project-tech">
+                <span>Python</span>
+                <span>scikit-learn</span>
+                <span>Streamlit</span>
+            </div>
+        </a>
+
+        <a href="https://github.com/swarn007-byte/0eye-vision-MCP" target="_blank" rel="noopener noreferrer" class="home-project">
+            <div class="home-project-top">
+                <h3 class="home-project-name">0eye-vision-MCP</h3>
+                <span class="home-project-arrow" aria-hidden="true">↗</span>
+            </div>
+            <p class="home-project-desc">
+                Give any LLM eyes. Drop an image, get instant vision intelligence powered by
+                multimodal AI — built as an MCP server.
+            </p>
+            <div class="home-project-tech">
+                <span>TypeScript</span>
+                <span>MCP</span>
+                <span>Multimodal AI</span>
+            </div>
+        </a>
+
+        <a href="https://github.com/swarn007-byte/StreetSentinel-AI-" target="_blank" rel="noopener noreferrer" class="home-project">
+            <div class="home-project-top">
+                <h3 class="home-project-name">StreetSentinel-AI</h3>
+                <span class="home-project-arrow" aria-hidden="true">↗</span>
+            </div>
+            <p class="home-project-desc">
+                Deep learning image captioning system that generates contextual descriptions from
+                real-time camera input for civic monitoring pipelines.
+            </p>
+            <div class="home-project-tech">
+                <span>PyTorch</span>
+                <span>OpenCV</span>
+                <span>Computer Vision</span>
+            </div>
+        </a>
+    </div>
+</section>
+
+<hr class="home-divider" />
+
+<section class="home-section">
+    <h2 class="home-section-title">Skills</h2>
+    <div class="home-skills">
+        <span>Python</span>
+        <span>C++</span>
+        <span>JavaScript</span>
+        <span>TypeScript</span>
+        <span>PyTorch</span>
+        <span>NumPy</span>
+        <span>pandas</span>
+        <span>OpenCV</span>
+        <span>React</span>
+        <span>Node.js</span>
+        <span>MongoDB</span>
+        <span>FastAPI</span>
+        <span>LangChain</span>
+        <span>Supabase</span>
+    </div>
+</section>
+
+<section class="home-footer-links">
+    <p>
+        also on
+        <a href="https://x.com/Chsnn1f" target="_blank" rel="noopener noreferrer" class="link">x</a>,
+        <a href="https://www.kaggle.com/swarnshekhar00101" target="_blank" rel="noopener noreferrer" class="link">kaggle</a>,
+        <a href="https://leetcode.com/u/swarn_shekhar/" target="_blank" rel="noopener noreferrer" class="link">leetcode</a>,
+        and
+        <a href="https://www.geeksforgeeks.org/user/swarnshetoxw/" target="_blank" rel="noopener noreferrer" class="link">geeksforgeeks</a>
+    </p>
+</section>
+
+{% endblock content %}

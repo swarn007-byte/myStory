@@ -1,0 +1,19 @@
+<li class="{% if node.is_dir %}directory mb-1{% else %}file mb-1{% endif %}">
+    {% if node.is_dir %}
+        <div class="folder-label flex items-center cursor-pointer text-neutral-600 dark:text-neutral-200 py-1">
+            <span class="duration-200 mr-1"><i class="toggle-icon transform transition-transform ph ph-caret-right"></i></span>
+            <span class="folder-name text-sm">{{ node.name }}</span>
+        </div>
+        <ul class="folder-contents ml-4 hidden">
+            {% for child in node.children %}
+                {% set node = child %}
+                {% include "file_node.html" %}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <a href="/{{ node.path }}" class="file-link py-1.5 text-sm flex items-center dark:text-neutral-400 dark:hover:text-neutral-200 transition text-neutral-600 hover:text-neutral-500">
+    
+            {{ node.name }}
+        </a>
+    {% endif %}
+</li>

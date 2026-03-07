@@ -1,0 +1,9 @@
+services:
+  web:
+    pull_policy: always
+    image: ghcr.io/namishh/me:latest
+    ports:
+      - "4321:8080"
+    environment:
+      - ENVIRONMENT=PRODUCTION
+    restart: unless-stopped
