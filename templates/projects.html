@@ -3,6 +3,7 @@
 {% block head %}
     {{ super() }}
     <script src="/static/gol.js" defer></script>
+    <script src="/static/home.js" defer></script>
 {% endblock head %}
 {% block meta %}
     <meta property="og:title" content="swarn's projects" />
@@ -17,26 +18,53 @@
     <meta property="twitter:image" content="/og/web/stuff.png" />
 {% endblock meta %}
 {% block content %}
-    <div id="projects-container">
-        {% for category in projects %}
-            <div class="">
-                <h2 class="text-xl font-bold mb-4">{{ category.type }}</h2>
-                <div class="flex flex-wrap">
-                    {% for project in category.array %}
-                        <a href="{{ project.link | default(value='https://github.com/swarn007-byte/' ~ project.name) }}" class="w-full md:w-1/2 md:py-0 py-2 {% if loop.index0 % 2 == 0 %}md:pr-2 pr-0{% else %}pl-0 md:pl-2{% endif %} mb-0 md:mb-4">
-                            <div class="border-neutral-300 dark:border-neutral-800 border-[1px] p-4 h-full">
-                                <h3 class="text-n font-bold dark:text-white text-neutral-800 mb-2">{{ project.name }}</h3>
-                                <p class="normal-text text-sm mb-4">{{ project.desc }}</p>
-                                <div class="flex flex-wrap gap-2">
-                                    {% for tech in project.tech %}
-                                        <span class="font-mono dark:text-neutral-200 text-neutral-600 bg-neutral-200 dark:bg-neutral-800 text-xs px-2 py-1">{{ tech }}</span>
-                                    {% endfor %}
-                                </div>
-                            </div>
+    <section class="projects-page-head">
+        <p class="projects-kicker">selected builds</p>
+        <h1 class="projects-page-title">projects</h1>
+        <p class="projects-page-copy">A clean index of the things I have built, with what each project does, the stack behind it, and the repository signals pulled from GitHub.</p>
+    </section>
+
+    <div id="projects-container" class="projects-container">
+        <div class="projects-grid">
+            {% for project in projects %}
+                <div class="project-card" data-repo="{{ project.name }}">
+                    <div class="project-header">
+                        <div>
+                            <p class="project-card-label">project</p>
+                            <h3 class="project-title">{{ project.name }}</h3>
+                        </div>
+                        <span class="project-stars" aria-label="repository stars">
+                            <i class="ph-fill ph-star"></i>
+                            <span class="stars-count">0</span>
+                        </span>
+                    </div>
+
+                    <div class="project-body">
+                        <p class="project-card-label">does</p>
+                        <p class="project-desc">{{ project.desc }}</p>
+                    </div>
+
+                    <div class="project-stack">
+                        <p class="project-card-label">stack</p>
+                        <div class="project-tech">
+                            {% for tech in project.tech %}
+                                <span>{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="{{ project.link | default(value='https://github.com/swarn007-byte/' ~ project.name) }}" target="_blank" rel="noopener noreferrer" class="project-link-btn github-btn">
+                            <i class="ph ph-github-logo"></i> github
                         </a>
-                    {% endfor %}
+                        {% if project.demo %}
+                        <a href="{{ project.demo }}" target="_blank" rel="noopener noreferrer" class="project-link-btn demo-btn">
+                            <i class="ph ph-link"></i> live demo
+                        </a>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 {% endblock content %}

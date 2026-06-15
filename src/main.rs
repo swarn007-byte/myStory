@@ -14,6 +14,7 @@ use crate::state::AppState;
 use crate::templates::init_tera;
 
 mod file_tree;
+mod github;
 mod handlers;
 mod image_generator;
 mod markdown;
@@ -35,6 +36,10 @@ async fn main() -> std::io::Result<()> {
 
     initialize_search_index(base_path)?;
 
+    let (gh_stats, gh_repos) = github::fetch_github_data().await;
+    let gh_stats_arc = Arc::new(gh_stats);
+    let gh_repos_arc = Arc::new(gh_repos);
+
     let title_font_data: &'static [u8] = include_bytes!("../static/_priv/fonts/InterE.ttf");
     let title_font = FontRef::try_from_slice(title_font_data).expect("Error loading title font");
     let title_font_arc = Arc::new(title_font);
@@ -43,12 +48,12 @@ async fn main() -> std::io::Result<()> {
     let path_font = FontRef::try_from_slice(path_font_data).expect("Error loading path font");
     let path_font_arc = Arc::new(path_font);
 
-    let mut address = "127.0.0.1:8080";
-    if let Ok(arg) = std::env::var("ENVIRONMENT") {
-        if arg == "PRODUCTION" {
-            address = "0.0.0.0:8080";
-        }
-    }
+    let port = std::env::var("PORT").unwrap_or_else(|_| "8080".to_string());
+    let address = if matches!(std::env::var("ENVIRONMENT").as_deref(), Ok("PRODUCTION")) {
+        format!("0.0.0.0:{port}")
+    } else {
+        format!("127.0.0.1:{port}")
+    };
 
     let server = HttpServer::new(move || {
         let tera = init_tera();
@@ -59,6 +64,8 @@ async fn main() -> std::io::Result<()> {
             file_tree: file_tree.clone(),
             title_font: title_font_arc.clone(),
             path_font: path_font_arc.clone(),
+            github_stats: (*gh_stats_arc).clone(),
+            github_repos: (*gh_repos_arc).clone(),
         };
 
         App::new()
@@ -79,7 +86,7 @@ async fn main() -> std::io::Result<()> {
             .service(web::resource("/health").route(web::get().to(health_check)))
             .service(web::resource("/{path:.*}").route(web::get().to(view_markdown)))
     })
-    .bind(address)?
+    .bind(address.as_str())?
     .run();
 
     server.await

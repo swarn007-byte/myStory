@@ -380,3 +380,147 @@ html {
 .home-footer-links {
     @apply mt-10 pt-2 text-sm text-neutral-600 dark:text-neutral-400;
 }
+
+/* ── projects page ── */
+
+.projects-page-head {
+    @apply mb-12;
+}
+
+.projects-kicker {
+    @apply text-xs uppercase tracking-widest text-neutral-500 dark:text-neutral-500 font-semibold;
+}
+
+.projects-page-title {
+    @apply text-4xl md:text-5xl font-bold text-neutral-900 dark:text-neutral-50 my-2;
+}
+
+.projects-page-copy {
+    @apply text-lg text-neutral-600 dark:text-neutral-400 max-w-3xl;
+}
+
+.projects-container {
+    @apply space-y-12;
+}
+
+.project-category-section {
+    @apply space-y-6;
+}
+
+.project-category-head {
+    @apply flex items-center justify-between gap-4 border-b border-neutral-200 dark:border-neutral-800 pb-4;
+}
+
+.project-category-head h2 {
+    @apply text-2xl font-bold text-neutral-900 dark:text-neutral-50;
+}
+
+.project-category-head span {
+    @apply text-sm text-neutral-600 dark:text-neutral-400;
+}
+
+.projects-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+}
+
+.project-card {
+    @apply flex flex-col h-full border border-neutral-300 dark:border-neutral-800 rounded-lg p-6 
+           transition-all duration-300 
+           hover:border-emerald-500 dark:hover:border-emerald-500
+           bg-white dark:bg-neutral-950/40;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, emerald 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+    animation: slide-line 0.6s ease infinite;
+}
+
+@keyframes slide-line {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.project-header {
+    @apply flex items-start justify-between gap-4 pb-4 border-b border-neutral-200 dark:border-neutral-800;
+}
+
+.project-card-label {
+    @apply text-xs uppercase tracking-widest text-neutral-500 dark:text-neutral-500 font-semibold mb-1;
+}
+
+.project-title {
+    @apply text-xl font-bold text-neutral-900 dark:text-neutral-50;
+}
+
+.project-stars {
+    @apply flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-300 dark:border-neutral-700 
+           text-sm font-mono text-neutral-600 dark:text-neutral-400 shrink-0;
+}
+
+.project-stars i {
+    @apply text-yellow-500;
+}
+
+.project-body {
+    @apply py-4 flex-1;
+}
+
+.project-desc {
+    @apply text-sm leading-relaxed text-neutral-600 dark:text-neutral-400;
+}
+
+.project-stack {
+    @apply py-4 border-t border-neutral-200 dark:border-neutral-800 border-b;
+}
+
+.project-tech {
+    @apply flex flex-wrap gap-2 mt-2;
+}
+
+.project-tech span {
+    @apply inline-block px-3 py-1 rounded text-xs font-mono 
+           bg-neutral-100 dark:bg-neutral-800 
+           text-neutral-700 dark:text-neutral-300;
+}
+
+.project-links {
+    @apply flex gap-3 mt-auto pt-4;
+}
+
+.project-link-btn {
+    @apply flex items-center justify-center gap-2 px-4 py-2 rounded font-medium text-sm
+           transition-all duration-200 no-underline
+           border border-neutral-300 dark:border-neutral-700;
+}
+
+.github-btn {
+    @apply flex-1 text-neutral-700 dark:text-neutral-300 
+           hover:bg-neutral-100 dark:hover:bg-neutral-800 
+           hover:border-neutral-400 dark:hover:border-neutral-600;
+}
+
+.demo-btn {
+    @apply flex-1 text-neutral-700 dark:text-neutral-300 
+           hover:bg-neutral-100 dark:hover:bg-neutral-800 
+           hover:border-neutral-400 dark:hover:border-neutral-600;
+}
+
+.project-link-btn i {
+    @apply text-lg;
+}

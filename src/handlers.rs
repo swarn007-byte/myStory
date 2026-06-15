@@ -24,6 +24,8 @@ pub async fn index(
     let mut context = Context::new();
     context.insert("file_tree", &file_tree);
     context.insert("path", &req.path());
+    context.insert("github_stats", &app_state.github_stats);
+    context.insert("github_repos", &app_state.github_repos);
     let html = app_state
         .tera
         .render("index.html", &context)

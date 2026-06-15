@@ -10,9 +10,7 @@ pub const AVATAR_URL: &str = "https://github.com/swarn007-byte.png";
 static BACKGROUND_IMAGES: Lazy<Arc<BackgroundImages>> = Lazy::new(|| Arc::new(load_backgrounds()));
 
 struct BackgroundImages {
-    notes: ImageBuffer<Rgba<u8>, Vec<u8>>,
     blog: ImageBuffer<Rgba<u8>, Vec<u8>>,
-    poems: ImageBuffer<Rgba<u8>, Vec<u8>>,
     journal: ImageBuffer<Rgba<u8>, Vec<u8>>,
     others: ImageBuffer<Rgba<u8>, Vec<u8>>,
 }
@@ -38,16 +36,15 @@ fn load_backgrounds() -> BackgroundImages {
     };
 
     BackgroundImages {
-        notes: load_image("static/_priv/og/notes.png"),
         blog: load_image("static/_priv/og/blog.png"),
-        poems: load_image("static/_priv/og/poems.png"),
         journal: load_image("static/_priv/og/journal.png"),
         others: load_image("static/_priv/og/others.png"),
     }
 }
 
 pub async fn load_avatar() -> Option<DynamicImage> {
-    let response = reqwest::get(AVATAR_URL).await.ok()?;
+    let client = reqwest::Client::builder().no_proxy().build().ok()?;
+    let response = client.get(AVATAR_URL).send().await.ok()?;
     if !response.status().is_success() {
         return None;
     }
@@ -212,11 +209,9 @@ pub fn generate_content_og_image(
     avatar: &Option<DynamicImage>,
 ) -> Vec<u8> {
     let bg = match dir_path {
-        path if path.starts_with("notes") => &BACKGROUND_IMAGES.notes,
         path if path.starts_with("blog") => &BACKGROUND_IMAGES.blog,
         path if path.starts_with("journal") => &BACKGROUND_IMAGES.journal,
-        path if path.starts_with("poems") => &BACKGROUND_IMAGES.poems,
-        _ => &BACKGROUND_IMAGES.notes,
+        _ => &BACKGROUND_IMAGES.others,
     };
     let mut img = bg.clone(); // Clone the preloaded background
 

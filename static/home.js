@@ -99,6 +99,32 @@
             .catch(() => {});
     }
 
+    // Fetch GitHub stars for project cards
+    function loadProjectStars() {
+        fetch(`https://api.github.com/users/${USER}/repos?sort=pushed&per_page=100`)
+            .then((r) => r.json())
+            .then((repos) => {
+                // Create a map of repo names to star counts
+                const starMap = {};
+                repos.forEach((repo) => {
+                    starMap[repo.name] = repo.stargazers_count;
+                });
+
+                // Update each project card with its star count
+                document.querySelectorAll(".project-card").forEach((card) => {
+                    const repoName = card.getAttribute("data-repo");
+                    const starsCount = starMap[repoName] || 0;
+                    const starsSpan = card.querySelector(".stars-count");
+                    if (starsSpan) {
+                        starsSpan.textContent = starsCount;
+                    }
+                });
+            })
+            .catch(() => {
+                // If API fails, stars remain at 0
+            });
+    }
+
     Promise.all([
         fetch(`https://api.github.com/users/${USER}`).then((r) => r.json()),
         fetch(
@@ -115,4 +141,7 @@
                     '<p class="normal-text text-sm"><a href="https://github.com/swarn007-byte" class="link" target="_blank">view on github</a></p>';
             if (activityEl) activityEl.innerHTML = "";
         });
+
+    // Load project stars on page load
+    loadProjectStars();
 })();

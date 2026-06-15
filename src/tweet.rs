@@ -98,6 +98,7 @@ fn format_tweet_date(date: DateTime<Utc>) -> String {
 async fn load_profile_image(url: &str, username: &str) -> Option<DynamicImage> {
     let client = Client::builder()
         .timeout(Duration::from_secs(5))
+        .no_proxy()
         .build()
         .ok()?;
 
@@ -128,6 +129,7 @@ async fn load_profile_image(url: &str, username: &str) -> Option<DynamicImage> {
 async fn load_media_image(url: &str) -> Option<DynamicImage> {
     let client = Client::builder()
         .timeout(Duration::from_secs(10))
+        .no_proxy()
         .build()
         .ok()?;
 
@@ -478,6 +480,7 @@ pub async fn generate_tweet(
     let tweet_url = format!("https://react-tweet.vercel.app/api/tweet/{}", id);
     let client = Client::builder()
         .timeout(Duration::from_secs(10))
+        .no_proxy()
         .build()
         .unwrap();
 

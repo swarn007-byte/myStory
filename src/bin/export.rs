@@ -14,6 +14,8 @@ use tera::Context;
 
 #[path = "../file_tree.rs"]
 mod file_tree;
+#[path = "../github.rs"]
+mod github;
 #[path = "../image_generator.rs"]
 mod image_generator;
 #[path = "../markdown.rs"]
@@ -128,9 +130,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let title_font =
         FontRef::try_from_slice(include_bytes!("../../static/_priv/fonts/InterE.ttf"))?;
     let path_font = FontRef::try_from_slice(include_bytes!("../../static/_priv/fonts/InterM.ttf"))?;
-    let avatar = actix_rt::System::new().block_on(image_generator::load_avatar());
+    let (avatar, (gh_stats, gh_repos)) = actix_rt::System::new().block_on(async {
+        (
+            image_generator::load_avatar().await,
+            github::fetch_github_data().await,
+        )
+    });
 
-    render_pages(dist, &tera, &file_tree)?;
+    render_pages(dist, &tera, &file_tree, &gh_stats, &gh_repos)?;
 
     let mut search_documents = Vec::new();
     let mut content_items = Vec::new();
@@ -183,9 +190,11 @@ fn render_pages(
     dist: &Path,
     tera: &tera::Tera,
     file_tree: &Arc<Vec<file_tree::FileNode>>,
+    gh_stats: &Option<github::GitHubStats>,
+    gh_repos: &Option<Vec<github::GitHubRepo>>,
 ) -> Result<(), Box<dyn std::error::Error>> {
     for page in PAGES {
-        render_web_page(tera, file_tree, page, &dist.join(page.output))?;
+        render_web_page(tera, file_tree, page, &dist.join(page.output), gh_stats, gh_repos)?;
     }
     Ok(())
 }
@@ -195,10 +204,16 @@ fn render_web_page(
     file_tree: &Arc<Vec<file_tree::FileNode>>,
     page: &Page,
     output: &Path,
+    gh_stats: &Option<github::GitHubStats>,
+    gh_repos: &Option<Vec<github::GitHubRepo>>,
 ) -> Result<(), Box<dyn std::error::Error>> {
     let mut context = Context::new();
     context.insert("file_tree", &file_tree::get_file_tree(file_tree));
     context.insert("path", page.route);
+    if page.route == "/" {
+        context.insert("github_stats", gh_stats);
+        context.insert("github_repos", gh_repos);
+    }
     if let Some(add_context) = page.context {
         add_context(&mut context);
     }

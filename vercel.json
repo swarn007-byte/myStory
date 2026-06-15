@@ -1,0 +1,4 @@
+{
+  "buildCommand": "if ! command -v cargo &> /dev/null; then curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && export PATH=\"$HOME/.cargo/bin:$PATH\"; fi && npx @tailwindcss/cli -i ./static/input.css -o ./static/style.css && cargo run --bin export",
+  "outputDirectory": "dist"
+}
