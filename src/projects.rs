@@ -16,7 +16,7 @@ pub fn get_projects() -> Vec<Project> {
             desc: "RAG pipeline to query Dostoevsky's White Nights with Bun, Express, Supabase pgvector, LangChain, and Upstash Redis.".to_string(),
             tech: vec!["typescript".to_string(), "langchain".to_string(), "rag".to_string()],
             link: Some("https://github.com/swarn007-byte/fyodor-dostoevsky-RETRIEVAL".to_string()),
-            demo: None,
+            demo: Some("https://fyodor-dostoevsky-retrieval.vercel.app/".to_string()),
         },
         Project {
             name: "StreetSentinel-AI-".to_string(),
