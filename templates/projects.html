@@ -7,7 +7,7 @@
 {% endblock head %}
 {% block meta %}
     <meta property="og:title" content="swarn's projects" />
-    <meta property="og:url" content="https://swarnshekhar.github.io/portfolio/stuff" />
+    <meta property="og:url" content="https://swarn-indol.vercel.app/stuff" />
     <meta property="og:image" content="/og/web/stuff.png" />
     <meta name="twitter:card" content="summary_large_image">
     <meta property="og:type" content="article" />
@@ -54,11 +54,11 @@
                     </div>
 
                     <div class="project-links">
-                        <a href="{{ project.link | default(value='https://github.com/swarn007-byte/' ~ project.name) }}" target="_blank" rel="noopener noreferrer" class="project-link-btn github-btn">
+                        <a href="{{ project.link | default(value='https://github.com/swarn007-byte/' ~ project.name) | safe }}" target="_blank" rel="noopener noreferrer" class="project-link-btn github-btn">
                             <i class="ph ph-github-logo"></i> github
                         </a>
                         {% if project.demo %}
-                        <a href="{{ project.demo }}" target="_blank" rel="noopener noreferrer" class="project-link-btn demo-btn">
+                        <a href="{{ project.demo | safe }}" target="_blank" rel="noopener noreferrer" class="project-link-btn demo-btn">
                             <i class="ph ph-link"></i> live demo
                         </a>
                         {% endif %}

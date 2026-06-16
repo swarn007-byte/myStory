@@ -438,7 +438,7 @@ fn render_rss(mut items: Vec<ContentItem>) -> String {
         (None, None) => a.title.cmp(&b.title),
     });
 
-    let base_url = "https://swarnshekhar.github.io/portfolio";
+    let base_url = "https://swarn-indol.vercel.app";
     let mut channel = rss::ChannelBuilder::default()
         .title("swarn")
         .link(base_url)

@@ -243,7 +243,7 @@ html {
 }
 
 .home-section {
-    @apply mt-10;
+    @apply mt-14;
 }
 
 .home-section-head {
@@ -267,7 +267,7 @@ html {
 }
 
 .home-divider {
-    @apply border-0 border-t border-neutral-300 dark:border-neutral-800 my-10;
+    @apply border-0 border-t border-neutral-300 dark:border-neutral-800 my-14;
 }
 
 /* github activity */
@@ -400,15 +400,15 @@ html {
 }
 
 .projects-container {
-    @apply space-y-12;
+    @apply space-y-16;
 }
 
 .project-category-section {
-    @apply space-y-6;
+    @apply space-y-8;
 }
 
 .project-category-head {
-    @apply flex items-center justify-between gap-4 border-b border-neutral-200 dark:border-neutral-800 pb-4;
+    @apply flex items-center justify-between gap-4 border-b border-neutral-200 dark:border-neutral-800 pb-5 mb-2;
 }
 
 .project-category-head h2 {
