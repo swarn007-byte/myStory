@@ -22,6 +22,8 @@ mod image_generator;
 mod markdown;
 #[path = "../media.rs"]
 mod media;
+#[path = "../portfolio.rs"]
+mod portfolio;
 #[path = "../projects.rs"]
 mod projects;
 #[path = "../templates.rs"]
@@ -61,7 +63,16 @@ const PAGES: &[Page] = &[
         og_path: Some("index"),
         og_title: "swarn",
         og_subtitle: "personal portfolio and garden",
-        context: None,
+        context: Some(add_home_context),
+    },
+    Page {
+        template: "index.html",
+        route: "/okayy",
+        output: "okayy/index.html",
+        og_path: Some("index"),
+        og_title: "swarn",
+        og_subtitle: "personal portfolio and garden",
+        context: Some(add_home_context),
     },
     Page {
         template: "projects.html",
@@ -71,6 +82,15 @@ const PAGES: &[Page] = &[
         og_title: "swarn",
         og_subtitle: "projects i have built",
         context: Some(add_projects_context),
+    },
+    Page {
+        template: "medium.html",
+        route: "/medium",
+        output: "medium/index.html",
+        og_path: Some("medium"),
+        og_title: "swarn",
+        og_subtitle: "medium writing on systems and ai",
+        context: Some(add_medium_context),
     },
     Page {
         template: "art.html",
@@ -178,6 +198,19 @@ fn add_projects_context(context: &mut Context) {
     context.insert("projects", &projects::get_projects());
 }
 
+fn add_home_context(context: &mut Context) {
+    context.insert("medium_articles", &portfolio::get_medium_articles());
+    context.insert(
+        "experience_highlights",
+        &portfolio::get_experience_highlights(),
+    );
+    context.insert("journal_entries", &portfolio::get_journal_entries());
+}
+
+fn add_medium_context(context: &mut Context) {
+    context.insert("medium_articles", &portfolio::get_medium_articles());
+}
+
 fn add_media_context(context: &mut Context) {
     context.insert("media", &media::get_media());
 }
@@ -210,7 +243,7 @@ fn render_web_page(
     let mut context = Context::new();
     context.insert("file_tree", &file_tree::get_file_tree(file_tree));
     context.insert("path", page.route);
-    if page.route == "/" {
+    if page.route == "/" || page.route == "/okayy" {
         context.insert("github_stats", gh_stats);
         context.insert("github_repos", gh_repos);
     }

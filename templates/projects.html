@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block title %}projects{% endblock title %}
+{% block main_class %}portfolio-main-shell{% endblock main_class %}
 {% block head %}
     {{ super() }}
-    <script src="/static/gol.js" defer></script>
     <script src="/static/home.js" defer></script>
 {% endblock head %}
 {% block meta %}
@@ -11,27 +11,30 @@
     <meta property="og:image" content="/og/web/stuff.png" />
     <meta name="twitter:card" content="summary_large_image">
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="all the stuff that i have made">
+    <meta property="og:description" content="RAG systems, networked systems experiments, computer vision projects, and MCP servers from Swarn's public work.">
 
-    <meta property="twitter:description" content="all the stuff that i have made">
+    <meta property="twitter:description" content="RAG systems, networked systems experiments, computer vision projects, and MCP servers from Swarn's public work.">
     <meta name="twitter:title" content="swarn's projects">
     <meta property="twitter:image" content="/og/web/stuff.png" />
 {% endblock meta %}
 {% block content %}
-    <section class="projects-page-head">
-        <p class="projects-kicker">selected builds</p>
-        <h1 class="projects-page-title">projects</h1>
-        <p class="projects-page-copy">A clean index of the things I have built, with what each project does, the stack behind it, and the repository signals pulled from GitHub.</p>
+    <section class="portfolio-page-head">
+        <p class="portfolio-kicker">selected builds</p>
+        <h1 class="portfolio-page-title">Projects</h1>
+        <p class="portfolio-page-copy">
+            RAG systems, networked systems experiments, computer vision work, and MCP tooling
+            pulled from Swarn's public repos.
+        </p>
     </section>
 
-    <div id="projects-container" class="projects-container">
-        <div class="projects-grid">
-            {% for project in projects %}
-                <div class="project-card" data-repo="{{ project.name }}">
-                    <div class="project-header">
+    <div class="projects-list">
+        {% for project in projects %}
+            <article class="project-row project-card" data-repo="{{ project.name }}">
+                <a href="{{ project.link | default(value='https://github.com/swarn007-byte/' ~ project.name) | safe }}" target="_blank" rel="noopener noreferrer" class="project-row-main">
+                    <div class="project-row-head">
                         <div>
-                            <p class="project-card-label">project</p>
-                            <h3 class="project-title">{{ project.name }}</h3>
+                            <p class="project-row-label">project</p>
+                            <h2>{{ project.name }}</h2>
                         </div>
                         <span class="project-stars" aria-label="repository stars">
                             <i class="ph-fill ph-star"></i>
@@ -39,32 +42,26 @@
                         </span>
                     </div>
 
-                    <div class="project-body">
-                        <p class="project-card-label">does</p>
-                        <p class="project-desc">{{ project.desc }}</p>
-                    </div>
+                    <p class="project-row-desc">{{ project.desc }}</p>
 
-                    <div class="project-stack">
-                        <p class="project-card-label">stack</p>
-                        <div class="project-tech">
-                            {% for tech in project.tech %}
-                                <span>{{ tech }}</span>
-                            {% endfor %}
-                        </div>
+                    <div class="project-row-tech">
+                        {% for tech in project.tech %}
+                            <span>{{ tech }}</span>
+                        {% endfor %}
                     </div>
+                </a>
 
-                    <div class="project-links">
-                        <a href="{{ project.link | default(value='https://github.com/swarn007-byte/' ~ project.name) | safe }}" target="_blank" rel="noopener noreferrer" class="project-link-btn github-btn">
-                            <i class="ph ph-github-logo"></i> github
-                        </a>
-                        {% if project.demo %}
-                        <a href="{{ project.demo | safe }}" target="_blank" rel="noopener noreferrer" class="project-link-btn demo-btn">
-                            <i class="ph ph-link"></i> live demo
-                        </a>
-                        {% endif %}
-                    </div>
+                <div class="project-row-links">
+                    <a href="{{ project.link | default(value='https://github.com/swarn007-byte/' ~ project.name) | safe }}" target="_blank" rel="noopener noreferrer" title="GitHub">
+                        <i class="ph ph-github-logo"></i>
+                    </a>
+                    {% if project.demo %}
+                    <a href="{{ project.demo | safe }}" target="_blank" rel="noopener noreferrer" title="Live demo">
+                        <i class="ph ph-link"></i>
+                    </a>
+                    {% endif %}
                 </div>
-            {% endfor %}
-        </div>
+            </article>
+        {% endfor %}
     </div>
 {% endblock content %}

@@ -139,6 +139,7 @@
                     class="flex mobile-top-section lg:hidden justify-between px-4 items-center gap-4"
                 >
                 <div class="flex gap-2">
+                    <a href="/medium" class="text-n mb-1">blog</a>
                     <a href="/art" class="text-n mb-1">art</a>
                     <a href="/stuff" class="text-n mb-1">projects</a>
                 </div>
@@ -165,7 +166,7 @@
         <div
             class="md:w-2/3 min-h-screen flex flex-col w-full {% block main_class %}lg:w-[47%]{% endblock %} px-4 py-8"
         >
-            <div class="navbar mb-4 items-center flex w-full justify-between">
+            <div class="navbar portfolio-top-nav mb-4 items-center flex w-full justify-between">
                 <div class="flex items-center gap-4">
                     <img
                         src="https://github.com/swarn007-byte.png"
@@ -175,20 +176,12 @@
                     <a href="/" class="font-bold text-xl">swarn</a>
                 </div>
                 <div class="lg:flex items-center gap-4">
-                    <a class="hidden lg:block" href="/art">art</a>
-                    <a class="hidden lg:block" href="/stuff">projects</a>
+                    <a class="portfolio-nav-link" href="/medium">blog</a>
+                    <a class="portfolio-nav-link" href="/stuff">projects</a>
+                    <a class="portfolio-nav-link" href="/media">media</a>
                     <i
                         id="theme-toggle"
-                        class="ph-fill hidden lg:block cursor-pointer text-xl ph-sun"
-                    ></i>
-                    <a href="/search">
-                        <i
-                            class="search-toggle ph ph-magnifying-glass hidden lg:block cursor-pointer text-2xl"
-                        ></i
-                    ></a>
-                    <i
-                        id="mobile-menu-toggle"
-                        class="ph cursor-pointer text-2xl ph-list lg:hidden mr-4"
+                        class="ph-fill cursor-pointer text-xl ph-sun"
                     ></i>
                 </div>
             </div>

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}medium{% endblock title %}
+{% block main_class %}portfolio-main-shell{% endblock main_class %}
+{% block head %}
+    {{ super() }}
+    <script src="/static/medium.js" defer></script>
+{% endblock head %}
+{% block meta %}
+    <meta property="og:title" content="swarn on medium" />
+    <meta property="og:url" content="https://swarn-indol.vercel.app/medium" />
+    <meta property="og:image" content="/og/web/medium.png" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Medium articles on Go networking, RAG systems, GraphRAG, and distributed design notes from Swarn.">
+    <meta property="twitter:description" content="Medium articles on Go networking, RAG systems, GraphRAG, and distributed design notes from Swarn.">
+    <meta name="twitter:title" content="swarn on medium">
+    <meta property="twitter:image" content="/og/web/medium.png" />
+{% endblock meta %}
+{% block content %}
+    <section class="portfolio-page-head medium-page-head">
+        <p class="portfolio-kicker">writing and field notes</p>
+        <h1 class="portfolio-page-title">Medium Articles</h1>
+        <p class="portfolio-page-copy">
+            Systems writing, AI retrieval notes, and practical engineering breakdowns from the things I keep building and overthinking.
+        </p>
+    </section>
+
+    <div class="medium-card-grid">
+        {% for article in medium_articles %}
+        <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="medium-tilt-card" data-tilt-card>
+            <div class="medium-tilt-shell">
+                <div class="medium-tilt-image-wrap">
+                    <img src="{{ article.image }}" alt="{{ article.title }}" class="medium-tilt-image" />
+                    <div class="medium-tilt-overlay"></div>
+                    <p class="medium-tilt-date">{{ article.published_label }}</p>
+                </div>
+                <div class="medium-tilt-body">
+                    <p class="medium-tilt-kicker">Medium</p>
+                    <h2>{{ article.title }}</h2>
+                    <p>{{ article.description }}</p>
+                    <div class="medium-tilt-tags">
+                        {% for tag in article.tags %}
+                        <span>{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+{% endblock content %}

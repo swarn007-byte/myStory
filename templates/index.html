@@ -1,202 +1,346 @@
 {% extends "base.html" %}
 {% block title %}home{% endblock title %}
 {% block sidebar %}{% endblock sidebar %}
-{% block main_class %}w-full max-w-2xl mx-auto lg:pl-0{% endblock main_class %}
+{% block main_class %}portfolio-main-shell{% endblock main_class %}
 {% block head %}
     {{ super() }}
     <script src="/static/home.js" defer></script>
 {% endblock head %}
 {% block meta %}
-<meta property="og:title" content="Swarn Shekhar | AI Engineer" />
+<meta property="og:title" content="Swarn Shekhar | AI/ML Developer" />
 <meta property="og:url" content="https://swarn-indol.vercel.app/" />
 <meta property="og:image" content="/og/web/index.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="og:type" content="website" />
-<meta property="og:description" content="AI/ML developer building RAG pipelines, computer vision, and MCP tools." />
-<meta property="twitter:description" content="AI/ML developer building RAG pipelines, computer vision, and MCP tools." />
+<meta property="og:description" content="AI/ML developer building RAG pipelines, computer vision systems, and MCP tools." />
+<meta property="twitter:description" content="AI/ML developer building RAG pipelines, computer vision systems, and MCP tools." />
 <meta name="twitter:title" content="Swarn Shekhar | AI/ML Developer" />
 <meta property="twitter:image" content="/og/web/index.png" />
 {% endblock meta %}
 {% block content %}
 
-<header class="home-header">
-    <img
-        src="https://github.com/swarn007-byte.png"
-        alt="Swarn Shekhar"
-        class="home-avatar"
-    />
-    <h1 class="home-name">swarn</h1>
-    <p class="home-role">ai/ml developer</p>
-    <p class="home-location">india</p>
-</header>
+<div class="origami-bird" aria-hidden="true">
+    <svg viewBox="0 0 100 100" focusable="false">
+        <g class="origami-bob">
+            <polygon class="wing wing-left" points="45,50 55,50 30,5" />
+            <polygon points="35,55 45,50 55,75" />
+            <polygon points="35,55 45,50 10,30" />
+            <polygon points="55,50 75,55 55,75" />
+            <polygon points="45,50 55,50 55,75" />
+            <polygon points="55,50 65,40 85,20" />
+            <polygon points="65,40 75,55 85,20" />
+            <polygon points="85,20 80,26 95,30" />
+            <polygon class="wing wing-right" points="45,50 55,50 15,80" />
+        </g>
+    </svg>
+</div>
+<div class="bird-light" aria-hidden="true"></div>
 
-<nav class="home-nav" aria-label="Contact and links">
-    <a href="https://drive.google.com/file/d/1C4Nv64ONPuVVtoIdua45fvBfTp_5sPod/view?usp=sharing" target="_blank" rel="noopener noreferrer" title="Resume"><i class="ph ph-file-text"></i></a>
-    <a href="mailto:swarnshekhar21j@gmail.com" title="Email"><i class="ph ph-envelope-simple"></i></a>
-    <a href="https://twitter.com/messages/compose?screen_name=Chsnn1f" target="_blank" rel="noopener noreferrer" title="DM on X"><i class="ph ph-x-logo"></i></a>
-    <a href="https://github.com/swarn007-byte" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="ph ph-github-logo"></i></a>
-    <a href="https://www.linkedin.com/in/swarn-shekhar-89890727b/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
-</nav>
+<section class="portfolio-hero">
+    <div class="portfolio-identity">
+        <img src="https://github.com/swarn007-byte.png" alt="Swarn Shekhar" class="portfolio-avatar" />
+        <div class="portfolio-title-wrap">
+            <h1 class="portfolio-name">swarn</h1>
+            <p class="portfolio-role">ai/ml developer</p>
+            <p class="portfolio-location">building from india</p>
+        </div>
+    </div>
 
-<section class="home-section">
-    <h2 class="home-section-title">About Me</h2>
-    <div class="home-prose">
+    <div class="portfolio-intro">
         <p>
-            I'm mostly into <span class="home-em">AI/ML</span> — building RAG pipelines,
-            computer vision systems, and tools that sit on top of large language models.
-            Most of my projects are things I built while trying to understand how
-            neural networks and retrieval systems actually work under the hood.
+            I build AI systems that are useful outside a notebook: retrieval pipelines,
+            computer vision tools, multimodal MCP servers, and machine learning interfaces
+            that make models easier to inspect.
         </p>
         <p>
-            I've published a paper on <span class="home-em">neural networks from scratch</span>,
-            solved 1000+ DSA problems on GeeksforGeeks and LeetCode, and actively compete on
-            Kaggle. Always open to conversations and collaborations — reach me at
-            <a href="mailto:swarnshekhar21j@gmail.com" class="link">swarnshekhar21j@gmail.com</a>.
+            I am especially interested in neural networks, RAG, backend tooling around LLMs,
+            and the part where raw experiments become something people can actually use.
         </p>
-        <p>
-            I document projects on GitHub and write about whatever I'm currently digging into.
-            In my free time I read, compete on coding platforms, and occasionally stare at
-            contribution graphs a little too long — check out my
-            <a href="/stuff" class="link">projects</a> and
-            <a href="/media" class="link">media log</a>.
-        </p>
+    </div>
+
+    <nav class="portfolio-socials" aria-label="Contact and links">
+        <a href="https://github.com/swarn007-byte" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="ph ph-github-logo"></i></a>
+        <a href="https://medium.com/@swarnshekhar007" target="_blank" rel="noopener noreferrer" title="Medium"><i class="ph ph-medium-logo"></i></a>
+        <a href="https://x.com/Chsnn1f" target="_blank" rel="noopener noreferrer" title="X"><i class="ph ph-x-logo"></i></a>
+        <a href="mailto:swarnshekhar21j@gmail.com" title="Email"><i class="ph ph-envelope-simple"></i></a>
+        <a href="https://www.kaggle.com/swarnshekhar00101" target="_blank" rel="noopener noreferrer" title="Kaggle"><i class="ph ph-chart-line-up"></i></a>
+        <a href="https://leetcode.com/u/swarn_shekhar/" target="_blank" rel="noopener noreferrer" title="LeetCode"><i class="ph ph-code"></i></a>
+    </nav>
+
+    <div class="portfolio-actions">
+        <a href="/static/pdfs/resume.pdf" target="_blank" rel="noopener noreferrer" class="portfolio-button portfolio-button-ghost" download="Swarn_Shekhar_Resume.pdf">
+            <i class="ph ph-download-simple"></i>
+            <span>Resume</span>
+        </a>
+        <a id="hire-me-link" href="mailto:swarnshekhar21j@gmail.com?subject=Opportunity&body=Hi%20Swarn%20Shekhar%2C%0A%0A" class="portfolio-button portfolio-button-primary">
+            <i class="ph ph-envelope-simple"></i>
+            <span>Hire Me</span>
+        </a>
     </div>
 </section>
 
-<hr class="home-divider" />
+<section class="portfolio-section">
+    <div class="portfolio-section-head">
+        <h2 class="portfolio-section-title">Experience</h2>
+        <span class="portfolio-section-note">open source and systems thinking</span>
+    </div>
+    <div class="experience-grid">
+        {% for item in experience_highlights %}
+        <a href="{{ item.link }}" target="_blank" rel="noopener noreferrer" class="experience-card">
+            <div class="experience-github-top">
+                <div class="experience-github-title">
+                    <span class="experience-state"><i class="ph-fill ph-circle"></i> Open issue</span>
+                    <h3>{{ item.title }}</h3>
+                </div>
+                <span class="experience-time">{{ item.timeframe }}</span>
+            </div>
+            <div class="experience-meta-row">
+                <span class="experience-repo">{{ item.org }}/PictoPy</span>
+                <span class="experience-role">{{ item.role }}</span>
+            </div>
+            <p class="experience-summary">{{ item.summary }}</p>
+            <div class="experience-tags">
+                {% for tag in item.tags %}
+                <span>{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
 
-<section class="home-section">
-    <div class="home-section-head">
-        <h2 class="home-section-title">GitHub Activity</h2>
-        <a href="https://github.com/swarn007-byte" target="_blank" rel="noopener noreferrer" class="home-view-all">view profile →</a>
+<section class="portfolio-section">
+    <h2 class="portfolio-section-title">Skills</h2>
+    <div class="portfolio-skills">
+        <span><i class="ph ph-code"></i> Python</span>
+        <span><i class="ph ph-brackets-curly"></i> C++</span>
+        <span><i class="ph ph-file-js"></i> TypeScript</span>
+        <span><i class="ph ph-brain"></i> PyTorch</span>
+        <span><i class="ph ph-chart-scatter"></i> NumPy</span>
+        <span><i class="ph ph-table"></i> pandas</span>
+        <span><i class="ph ph-eye"></i> OpenCV</span>
+        <span><i class="ph ph-atom"></i> React</span>
+        <span><i class="ph ph-database"></i> MongoDB</span>
+        <span><i class="ph ph-lightning"></i> FastAPI</span>
+        <span><i class="ph ph-link-simple"></i> LangChain</span>
+        <span><i class="ph ph-vector-three"></i> Supabase</span>
+        <span><i class="ph ph-robot"></i> MCP</span>
+        <span><i class="ph ph-cloud"></i> Vercel</span>
+    </div>
+</section>
+
+<section id="projects" class="portfolio-section">
+    <div class="portfolio-section-head">
+        <h2 class="portfolio-section-title">Projects</h2>
+        <a href="/stuff" class="portfolio-view-all">View All <i class="ph ph-arrow-up-right"></i></a>
+    </div>
+
+    <div class="portfolio-project-grid">
+        <a href="https://github.com/swarn007-byte/ReszVault" target="_blank" rel="noopener noreferrer" class="portfolio-project-card">
+            <div class="portfolio-project-preview rag-preview">
+                <span>reszVault</span>
+            </div>
+            <div class="portfolio-project-body">
+                <div class="portfolio-project-title-row">
+                    <h3>reszVault</h3>
+                    <i class="ph ph-arrow-up-right"></i>
+                </div>
+                <p>Full-stack RAG workspace for building vaults, indexing multiple PDFs, and querying project knowledge through source-grounded chat.</p>
+                <div class="portfolio-project-tags">
+                    <span>TypeScript</span>
+                    <span>RAG</span>
+                    <span>Supabase</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://github.com/swarn007-byte/waveNET" target="_blank" rel="noopener noreferrer" class="portfolio-project-card">
+            <div class="portfolio-project-preview wavenet-preview">
+                <i class="ph ph-share-network"></i>
+                <span>waveNET</span>
+            </div>
+            <div class="portfolio-project-body">
+                <div class="portfolio-project-title-row">
+                    <h3>waveNET</h3>
+                    <i class="ph ph-arrow-up-right"></i>
+                </div>
+                <p>Go networking experiment where nearby devices discover peers with UDP and relay messages over TCP using TTL and duplicate protection.</p>
+                <div class="portfolio-project-tags">
+                    <span>Go</span>
+                    <span>UDP</span>
+                    <span>TCP</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://github.com/swarn007-byte/Sentinel" target="_blank" rel="noopener noreferrer" class="portfolio-project-card">
+            <div class="portfolio-project-preview sentinel-preview">
+                <i class="ph ph-camera"></i>
+                <span>santinel</span>
+            </div>
+            <div class="portfolio-project-body">
+                <div class="portfolio-project-title-row">
+                    <h3>santinel</h3>
+                    <i class="ph ph-arrow-up-right"></i>
+                </div>
+                <p>Street-monitoring deep learning pipeline that captions scenes in real time and flags civic violations like littering and illegal dumping.</p>
+                <div class="portfolio-project-tags">
+                    <span>Python</span>
+                    <span>PyTorch</span>
+                    <span>Vision</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://github.com/swarn007-byte/0-vision-MCP" target="_blank" rel="noopener noreferrer" class="portfolio-project-card">
+            <div class="portfolio-project-preview vision-preview">
+                <i class="ph ph-eye"></i>
+                <span>novisionmcp</span>
+            </div>
+            <div class="portfolio-project-body">
+                <div class="portfolio-project-title-row">
+                    <h3>novisionmcp</h3>
+                    <i class="ph ph-arrow-up-right"></i>
+                </div>
+                <p>MCP server that gives text-only LLM clients image understanding by routing local image prompts through OpenRouter vision models.</p>
+                <div class="portfolio-project-tags">
+                    <span>Python</span>
+                    <span>MCP</span>
+                    <span>OpenRouter</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
+
+<section class="portfolio-section github-section">
+    <div class="portfolio-section-head">
+        <h2 class="portfolio-section-title">GitHub</h2>
+        <a href="https://github.com/swarn007-byte" target="_blank" rel="noopener noreferrer" class="portfolio-view-all">Profile <i class="ph ph-arrow-up-right"></i></a>
     </div>
 
     <div id="github-stats" class="github-stats">
-        <span class="github-stat-skeleton">loading stats…</span>
+        {% if github_stats %}
+            <div class="github-stat"><strong>{{ github_stats.public_repos }}</strong> repos</div>
+            <div class="github-stat"><strong>{{ github_stats.followers }}</strong> followers</div>
+            <div class="github-stat"><strong>{{ github_stats.following }}</strong> following</div>
+            <a href="https://github.com/swarn007-byte?achievement=quickdraw&tab=achievements" target="_blank" rel="noopener noreferrer" class="github-badge-link" aria-label="GitHub Quickdraw achievement badge">
+                <img src="https://github.githubassets.com/assets/quickdraw-default-39c6aec8ff89.png" alt="GitHub Quickdraw achievement badge" class="github-badge-image" />
+            </a>
+            <a href="https://github.com/swarn007-byte?achievement=starstruck&tab=achievements" target="_blank" rel="noopener noreferrer" class="github-badge-link" aria-label="GitHub Starstruck achievement badge">
+                <img src="https://github.githubassets.com/assets/starstruck-default-b6610abad518.png" alt="GitHub Starstruck achievement badge" class="github-badge-image" />
+            </a>
+        {% else %}
+            <span class="github-stat-skeleton">loading stats...</span>
+        {% endif %}
     </div>
 
-    <div class="github-chart-wrap">
-        <img
-            id="contrib-chart"
-            src="https://ghchart.rshah.org/39d353/swarn007-byte"
-            alt="GitHub contribution chart for swarn007-byte"
-            class="github-chart"
-            loading="lazy"
-        />
+    <div class="github-chart-wrap" aria-label="GitHub contribution chart for swarn007-byte">
+        <div id="contrib-chart" class="github-contrib-grid">
+            <span class="github-stat-skeleton">loading contribution grid...</span>
+        </div>
     </div>
 
     <div id="repo-activity" class="repo-activity-list" aria-label="Recent repository activity">
-        <p class="normal-text text-sm">loading recent activity…</p>
+        <p class="normal-text text-sm">loading recent activity...</p>
     </div>
 </section>
 
-<hr class="home-divider" />
-
-<section class="home-section">
-    <div class="home-section-head">
-        <h2 class="home-section-title">Projects</h2>
-        <a href="/stuff" class="home-view-all">view all →</a>
+<section id="medium-articles" class="portfolio-section">
+    <div class="portfolio-section-head">
+        <h2 class="portfolio-section-title">Medium Articles</h2>
+        <a href="/medium" class="portfolio-view-all">View All <i class="ph ph-arrow-up-right"></i></a>
     </div>
 
-    <div class="home-projects">
-        <a href="https://github.com/swarn007-byte/fyodor-dostoevsky-RETRIEVAL" target="_blank" rel="noopener noreferrer" class="home-project">
-            <div class="home-project-top">
-                <h3 class="home-project-name">fyodor-dostoevsky-RETRIEVAL</h3>
-                <span class="home-project-arrow" aria-hidden="true">↗</span>
+    <div class="portfolio-blog-list">
+        {% for article in medium_articles %}
+        <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="portfolio-blog-item">
+            <div class="portfolio-blog-copy">
+                <h3>{{ article.title }}</h3>
+                <p><i class="ph ph-calendar-blank"></i> {{ article.published_label }}</p>
+                <p class="portfolio-blog-description">{{ article.description }}</p>
+                <div class="portfolio-blog-tags">
+                    <span><i class="ph ph-medium-logo"></i> medium</span>
+                    <span><i class="ph ph-hands-clapping"></i> {{ article.clap_count }}</span>
+                    {% for tag in article.tags %}
+                    <span>{{ tag }}</span>
+                    {% endfor %}
+                </div>
             </div>
-            <p class="home-project-desc">
-                Retrieval-Augmented Generation pipeline built with Bun, Express, Supabase pgvector,
-                LangChain, and Upstash Redis to query Dostoevsky's White Nights.
-            </p>
-            <div class="home-project-tech">
-                <span>TypeScript</span>
-                <span>LangChain</span>
-                <span>pgvector</span>
-                <span>RAG</span>
-            </div>
+            <i class="ph ph-arrow-up-right"></i>
         </a>
-
-        <a href="https://github.com/swarn007-byte/ML-Studio-Interactive" target="_blank" rel="noopener noreferrer" class="home-project">
-            <div class="home-project-top">
-                <h3 class="home-project-name">ML-Studio-Interactive</h3>
-                <span class="home-project-arrow" aria-hidden="true">↗</span>
-            </div>
-            <p class="home-project-desc">
-                ML algorithm visualiser over user-provided custom datasets — train, compare,
-                and understand models interactively.
-            </p>
-            <div class="home-project-tech">
-                <span>Python</span>
-                <span>scikit-learn</span>
-                <span>Streamlit</span>
-            </div>
-        </a>
-
-        <a href="https://github.com/swarn007-byte/0eye-vision-MCP" target="_blank" rel="noopener noreferrer" class="home-project">
-            <div class="home-project-top">
-                <h3 class="home-project-name">0eye-vision-MCP</h3>
-                <span class="home-project-arrow" aria-hidden="true">↗</span>
-            </div>
-            <p class="home-project-desc">
-                Give any LLM eyes. Drop an image, get instant vision intelligence powered by
-                multimodal AI — built as an MCP server.
-            </p>
-            <div class="home-project-tech">
-                <span>TypeScript</span>
-                <span>MCP</span>
-                <span>Multimodal AI</span>
-            </div>
-        </a>
-
-        <a href="https://github.com/swarn007-byte/StreetSentinel-AI-" target="_blank" rel="noopener noreferrer" class="home-project">
-            <div class="home-project-top">
-                <h3 class="home-project-name">StreetSentinel-AI</h3>
-                <span class="home-project-arrow" aria-hidden="true">↗</span>
-            </div>
-            <p class="home-project-desc">
-                Deep learning image captioning system that generates contextual descriptions from
-                real-time camera input for civic monitoring pipelines.
-            </p>
-            <div class="home-project-tech">
-                <span>PyTorch</span>
-                <span>OpenCV</span>
-                <span>Computer Vision</span>
-            </div>
-        </a>
+        {% endfor %}
     </div>
 </section>
 
-<hr class="home-divider" />
+<section class="portfolio-section contact-section">
+    <div class="portfolio-section-head">
+        <h2 class="portfolio-section-title">Contact Me</h2>
+        <span class="portfolio-section-note">open to internships and full-time roles</span>
+    </div>
 
-<section class="home-section">
-    <h2 class="home-section-title">Skills</h2>
-    <div class="home-skills">
-        <span>Python</span>
-        <span>C++</span>
-        <span>JavaScript</span>
-        <span>TypeScript</span>
-        <span>PyTorch</span>
-        <span>NumPy</span>
-        <span>pandas</span>
-        <span>OpenCV</span>
-        <span>React</span>
-        <span>Node.js</span>
-        <span>MongoDB</span>
-        <span>FastAPI</span>
-        <span>LangChain</span>
-        <span>Supabase</span>
+    <div class="contact-showcase">
+        <div class="contact-spotlight-card">
+            <div class="contact-spotlight-glow" aria-hidden="true"></div>
+            <p class="contact-kicker">Let's build</p>
+            <h3>AI systems, backend infra, and useful developer tooling.</h3>
+            <p>
+                I am looking for work where machine learning meets product thinking:
+                RAG systems, multimodal tools, distributed systems ideas, and clean backend execution.
+            </p>
+            <div class="contact-link-stack">
+                <a id="contact-email-link" href="mailto:swarnshekhar21j@gmail.com?subject=Hello&body=Hi%20Swarn%20Shekhar%2C%0A%0A">Email me</a>
+                <a href="https://www.linkedin.com/in/swarn-shekhar-89890727b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/swarn007-byte" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+        </div>
+
+        <form id="contact-form" action="mailto:swarnshekhar21j@gmail.com" method="post" enctype="text/plain" class="contact-form-panel">
+            <p class="contact-kicker">Quick message</p>
+            <h3>Say hello</h3>
+            <label>
+                Name
+                <input type="text" name="name" placeholder="Your name" />
+            </label>
+            <label>
+                Email
+                <input type="email" name="email" placeholder="your@email.com" />
+            </label>
+            <label>
+                Message
+                <textarea name="message" rows="5" placeholder="Hi Swarn Shekhar..."></textarea>
+            </label>
+            <button type="submit" class="contact-submit">Open email draft</button>
+        </form>
     </div>
 </section>
 
-<section class="home-footer-links">
-    <p>
-        also on
-        <a href="https://x.com/Chsnn1f" target="_blank" rel="noopener noreferrer" class="link">x</a>,
-        <a href="https://www.kaggle.com/swarnshekhar00101" target="_blank" rel="noopener noreferrer" class="link">kaggle</a>,
-        <a href="https://leetcode.com/u/swarn_shekhar/" target="_blank" rel="noopener noreferrer" class="link">leetcode</a>,
-        and
-        <a href="https://www.geeksforgeeks.org/user/swarnshetoxw/" target="_blank" rel="noopener noreferrer" class="link">geeksforgeeks</a>
-    </p>
-</section>
+<div class="resume-chat" data-open="false">
+    <button class="resume-chat-toggle" type="button" aria-expanded="false" aria-controls="resume-chat-panel">
+        <i class="ph ph-chat-circle-text"></i>
+        <span>Chat with me</span>
+    </button>
+    <section class="resume-chat-panel" id="resume-chat-panel" aria-label="Resume chat">
+        <div class="resume-chat-head">
+            <div>
+                <p class="chat-label">Resume Q&A</p>
+                <h2>Ask about Swarn</h2>
+            </div>
+            <button class="resume-chat-close" type="button" aria-label="Close chat"><i class="ph ph-x"></i></button>
+        </div>
+        <div class="resume-chat-messages" aria-live="polite">
+            <p class="resume-chat-bubble bot">Hi, I can answer quick questions about Swarn's resume, skills, projects, and contact details.</p>
+        </div>
+        <div class="resume-chat-prompts" aria-label="Suggested questions">
+            <button type="button">What are his top projects?</button>
+            <button type="button">What skills does he have?</button>
+            <button type="button">How can I contact him?</button>
+        </div>
+        <form class="resume-chat-form">
+            <input type="text" name="question" placeholder="Ask about resume..." autocomplete="off" />
+            <button type="submit" aria-label="Send"><i class="ph ph-paper-plane-tilt"></i></button>
+        </form>
+    </section>
+</div>
 
 {% endblock content %}

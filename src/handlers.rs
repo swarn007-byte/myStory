@@ -2,6 +2,7 @@ use crate::file_tree::get_file_tree;
 use crate::image_generator::{generate_content_og_image, generate_web_og_image};
 use crate::markdown::{extract_frontmatter, markdown_to_html};
 use crate::media::get_media;
+use crate::portfolio::{get_experience_highlights, get_journal_entries, get_medium_articles};
 use crate::projects::get_projects;
 use crate::search::search_content;
 use crate::state::AppState;
@@ -26,9 +27,29 @@ pub async fn index(
     context.insert("path", &req.path());
     context.insert("github_stats", &app_state.github_stats);
     context.insert("github_repos", &app_state.github_repos);
+    context.insert("medium_articles", &get_medium_articles());
+    context.insert("experience_highlights", &get_experience_highlights());
+    context.insert("journal_entries", &get_journal_entries());
     let html = app_state
         .tera
         .render("index.html", &context)
+        .map_err(|_| actix_web::error::ErrorInternalServerError("Template error"))?;
+    Ok(HttpResponse::Ok().content_type("text/html").body(html))
+}
+
+pub async fn medium_page(
+    app_state: web::Data<AppState>,
+    _: web::Query<HashMap<String, String>>,
+    req: HttpRequest,
+) -> Result<HttpResponse, actix_web::Error> {
+    let file_tree = get_file_tree(&app_state.file_tree);
+    let mut context = Context::new();
+    context.insert("file_tree", &file_tree);
+    context.insert("path", &req.path());
+    context.insert("medium_articles", &get_medium_articles());
+    let html = app_state
+        .tera
+        .render("medium.html", &context)
         .map_err(|_| actix_web::error::ErrorInternalServerError("Template error"))?;
     Ok(HttpResponse::Ok().content_type("text/html").body(html))
 }
@@ -348,6 +369,7 @@ pub async fn generate_web_og(
         "art" => ("swarn", "art i have made"),
         "kino" => ("swarn", "list of personal resources"),
         "media" => ("swarn", "media i consume and review"),
+        "medium" => ("swarn", "medium writing on systems and ai"),
         _ => return Ok(HttpResponse::NotFound().body("Invalid web path")),
     };
 

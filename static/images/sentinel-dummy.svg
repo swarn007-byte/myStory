@@ -1,0 +1,29 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="900" fill="#101214"/>
+  <rect x="86" y="70" width="1268" height="760" rx="22" fill="#171A1D" stroke="#2C3338"/>
+  <text x="128" y="146" fill="#F4F4F5" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800">StreetSentinel</text>
+  <text x="128" y="190" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="22">Cascaded vision inference for real-time civic monitoring.</text>
+  <rect x="128" y="250" width="716" height="466" rx="18" fill="#22272B" stroke="#3F464D"/>
+  <rect x="164" y="290" width="644" height="350" rx="12" fill="#111827"/>
+  <path d="M164 640L320 470L470 564L606 400L808 640H164Z" fill="#374151"/>
+  <path d="M164 640L316 520L484 584L626 472L808 640H164Z" fill="#4B5563"/>
+  <rect x="232" y="366" width="130" height="72" rx="10" stroke="#22C55E" stroke-width="5"/>
+  <text x="244" y="456" fill="#22C55E" font-family="Geist Mono, Consolas, monospace" font-size="18">unique frame</text>
+  <rect x="566" y="426" width="164" height="92" rx="10" stroke="#F59E0B" stroke-width="5"/>
+  <text x="586" y="540" fill="#F59E0B" font-family="Geist Mono, Consolas, monospace" font-size="18">flagged</text>
+  <rect x="164" y="664" width="188" height="26" rx="13" fill="#22C55E"/>
+  <rect x="376" y="664" width="188" height="26" rx="13" fill="#60A5FA"/>
+  <rect x="588" y="664" width="188" height="26" rx="13" fill="#F59E0B"/>
+  <rect x="900" y="250" width="326" height="466" rx="18" fill="#22272B" stroke="#3F464D"/>
+  <text x="936" y="306" fill="#F4F4F5" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="700">Pipeline</text>
+  <circle cx="950" cy="370" r="9" fill="#22C55E"/>
+  <text x="976" y="378" fill="#D4D4D8" font-family="Inter, Arial, sans-serif" font-size="20">Dedup</text>
+  <circle cx="950" cy="430" r="9" fill="#60A5FA"/>
+  <text x="976" y="438" fill="#D4D4D8" font-family="Inter, Arial, sans-serif" font-size="20">Keep-latest queue</text>
+  <circle cx="950" cy="490" r="9" fill="#F59E0B"/>
+  <text x="976" y="498" fill="#D4D4D8" font-family="Inter, Arial, sans-serif" font-size="20">CLIP triage</text>
+  <circle cx="950" cy="550" r="9" fill="#EF4444"/>
+  <text x="976" y="558" fill="#D4D4D8" font-family="Inter, Arial, sans-serif" font-size="20">Caption alert</text>
+  <rect x="936" y="620" width="254" height="48" rx="12" fill="#111827" stroke="#374151"/>
+  <text x="968" y="651" fill="#A7F3D0" font-family="Geist Mono, Consolas, monospace" font-size="18">latency: 118 ms</text>
+</svg>

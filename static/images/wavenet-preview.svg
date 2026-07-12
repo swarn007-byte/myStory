@@ -1,0 +1,27 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="900" fill="#08111A"/>
+  <rect x="74" y="64" width="1292" height="772" rx="24" fill="#0E1722" stroke="#203244"/>
+  <text x="128" y="148" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800">waveNET</text>
+  <text x="128" y="192" fill="#9FB5C9" font-family="Inter, Arial, sans-serif" font-size="22">Flood-style relay routing for local device networks.</text>
+
+  <circle cx="250" cy="420" r="34" fill="#22C55E"/>
+  <circle cx="470" cy="290" r="26" fill="#38BDF8"/>
+  <circle cx="506" cy="540" r="26" fill="#38BDF8"/>
+  <circle cx="720" cy="420" r="28" fill="#F59E0B"/>
+  <circle cx="960" cy="290" r="30" fill="#60A5FA"/>
+  <circle cx="982" cy="560" r="30" fill="#60A5FA"/>
+  <circle cx="1188" cy="420" r="38" fill="#F97316"/>
+
+  <path d="M282 404L444 302" stroke="#34D399" stroke-width="6" stroke-linecap="round"/>
+  <path d="M282 438L476 526" stroke="#34D399" stroke-width="6" stroke-linecap="round"/>
+  <path d="M496 304L690 404" stroke="#38BDF8" stroke-width="6" stroke-linecap="round"/>
+  <path d="M530 526L692 438" stroke="#38BDF8" stroke-width="6" stroke-linecap="round"/>
+  <path d="M748 404L930 304" stroke="#F59E0B" stroke-width="6" stroke-linecap="round"/>
+  <path d="M748 438L956 542" stroke="#F59E0B" stroke-width="6" stroke-linecap="round"/>
+  <path d="M990 304L1152 402" stroke="#60A5FA" stroke-width="6" stroke-linecap="round"/>
+  <path d="M1010 546L1146 438" stroke="#60A5FA" stroke-width="6" stroke-linecap="round"/>
+
+  <rect x="108" y="666" width="1224" height="110" rx="16" fill="#101C28" stroke="#223346"/>
+  <text x="150" y="722" fill="#E2E8F0" font-family="Geist Mono, Consolas, monospace" font-size="22">packet = { id, origin, ttl, seen }</text>
+  <text x="150" y="758" fill="#8DC7A3" font-family="Geist Mono, Consolas, monospace" font-size="20">udp discovery  ->  tcp relay  ->  duplicate protection  ->  nearest reachable path</text>
+</svg>
