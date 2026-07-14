@@ -478,7 +478,7 @@
             });
         });
 
-        document.querySelectorAll("#journal .portfolio-blog-item").forEach((entry) => {
+        document.querySelectorAll("#medium-articles .portfolio-blog-item").forEach((entry) => {
             const title = entry.querySelector("h3")?.innerText?.trim() || "Journal";
             const description = entry.querySelector(".portfolio-blog-description")?.innerText?.trim() || "";
             const meta = entry.querySelector(".portfolio-blog-copy p")?.innerText?.trim() || "";
